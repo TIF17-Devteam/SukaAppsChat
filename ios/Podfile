@@ -8,6 +8,10 @@ target 'SukaAppsChat' do
 
   use_react_native!(:path => config["reactNativePath"])
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
+  pod 'RNReanimated', :path => '../node_modules/react-native-reanimated'
+
   target 'SukaAppsChatTests' do
     inherit! :complete
     # Pods for testing
