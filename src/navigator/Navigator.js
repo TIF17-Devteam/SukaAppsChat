@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
 import { Provider as PaperProvider } from "react-native-paper";
+
 import { storeToken, getToken, destroyToken } from "../data/local/auth";
+import { AppContext } from "../config/context";
+import { DefaultTheme, DarkTheme } from "../config/theme";
 
 import SplashScreen from '../screens/SplashScreen';
 import NavAuth from './NavAuth';
 import NavHome from './NavHome';
-
-import { AuthContext } from "../config/context";
 
 const Navigator = () => {
     const [state, dispatch] = React.useReducer(
@@ -32,24 +32,32 @@ const Navigator = () => {
                         isSignedIn: false,
                         token: null
                     };
+                case 'CHANGE_THEME':
+                    return {
+                        ...prevState,
+                        theme: action.theme
+                    }
             }
         },
         {
             isLoading: true,
             isSignedIn: false,
-            token: null
+            token: null,
+            theme: 'default'
         });
 
     React.useEffect(() => {
         const bootstrapAsync = async () => {
             const token = await getToken();
             dispatch({ type: 'RESTORE_TOKEN', token: token });
+
+            // TODO("Load app config")
         };
 
         bootstrapAsync();
     }, []);
 
-    const authContext = React.useMemo(
+    const appContext = React.useMemo(
         () => ({
             signIn: async token => {
                 await storeToken(token);
@@ -58,6 +66,9 @@ const Navigator = () => {
             signOut: async () => {
                 await destroyToken();
                 dispatch({ type: 'SIGN_OUT' })
+            },
+            changeTheme: async theme => {
+                dispatch({ type: 'CHANGE_THEME', theme: theme })
             }
         }),
         []
@@ -67,16 +78,18 @@ const Navigator = () => {
         return <SplashScreen />;
     }
 
+    const theme = state.theme == 'default' ? DefaultTheme : DarkTheme
+
     return (
-        <PaperProvider>
-            <AuthContext.Provider value={authContext}>
+        <PaperProvider theme={theme}>
+            <AppContext.Provider value={appContext}>
                 <NavigationContainer>
                     {state.token ?
                         <NavHome /> :
                         <NavAuth />
                     }
                 </NavigationContainer>
-            </AuthContext.Provider>
+            </AppContext.Provider>
         </PaperProvider>
     );
 }

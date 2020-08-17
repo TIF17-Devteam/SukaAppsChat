@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { View, Text, Button, TouchableOpacity, ScrollView, StyleSheet, TextInput, Image, ActivityIndicator } from "react-native"; 
-import { AuthContext } from "../config/context";
+import { View, Text, Button, TouchableOpacity, ScrollView, StyleSheet, TextInput, Image, ActivityIndicator } from "react-native";
+import { AppContext } from "../config/context";
 
 const LoginScreen = ({ navigation }) => {
-    const { signIn } = React.useContext(AuthContext);
+    const { signIn } = React.useContext(AppContext);
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [loading, setLoading] = React.useState(false);
