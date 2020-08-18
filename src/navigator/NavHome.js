@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from '../screens/HomeScreen';
 import ChatScreen from '../screens/ChatScreen';
 import GroupInfoScreen from '../screens/GroupInfoScreen';
+import ProfileScreen from '../screens/ProfileScreen';
 
 const Stack = createStackNavigator();
 
@@ -11,6 +12,7 @@ const NavHome = () => (
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Chat" component={ChatScreen} />
         <Stack.Screen name="GroupInfo" component={GroupInfoScreen} />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
     </Stack.Navigator>
 );
 

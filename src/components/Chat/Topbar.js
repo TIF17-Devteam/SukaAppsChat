@@ -9,7 +9,7 @@ const Topbar = (props) => {
 
     const navigateToDetail = () => {
         dismissMenu();
-        navigation.navigate('GroupInfo')
+        navigation.navigate('Profile')
     }
 
     return (

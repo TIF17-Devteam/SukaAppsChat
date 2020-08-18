@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, ScrollView, Text } from 'react-native';
+import { View, StyleSheet, ScrollView, Text, FlatList } from 'react-native';
 import { useTheme, Avatar, List, TouchableRipple, IconButton } from 'react-native-paper';
 import { Topbar } from '../components/GroupInfo'
-import { FlatList } from 'react-native-gesture-handler';
 import mockMembers from '../data/mock/members';
 
 // TODO: Handle API
