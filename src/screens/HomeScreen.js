@@ -49,7 +49,7 @@ const HomeScreen = ({ navigation }) => {
                     {
                         icon: 'account-group',
                         label: 'Group baru',
-                        onPress: () => alert('Group baru')
+                        onPress: () => navigation.navigate('NewGroup')
                     },
                     {
                         icon: 'message-text',
