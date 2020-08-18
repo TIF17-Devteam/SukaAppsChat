@@ -1,22 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text, FlatList } from 'react-native';
-import { useTheme, Avatar, List, Appbar, Divider, FAB, IconButton } from 'react-native-paper';
-import mockMembers from '../data/mock/members';
-
+import { useTheme, Avatar, List, Appbar, Divider, FAB } from 'react-native-paper';
 
 const NewGroupScreen = (props) => {
+    const mockMembers = [
+        {
+            id: '1',
+            name: 'Alfa',
+            avatar: 'https://avatars2.githubusercontent.com/u/33979532?s=460&u=3738fbaa6b172215a466a64d17292366b0a7d2b7&v=4',
+            username: '17106050045'
+        },
+        {
+            id: '2',
+            name: 'Azki',
+            avatar: 'https://avatars2.githubusercontent.com/u/33979532?s=460&u=3738fbaa6b172215a466a64d17292366b0a7d2b7&v=4',
+            username: '17106050045'
+        },
+        {
+            id: '3',
+            name: 'Hidayat',
+            avatar: 'https://avatars2.githubusercontent.com/u/33979532?s=460&u=3738fbaa6b172215a466a64d17292366b0a7d2b7&v=4',
+            username: '17106050045'
+        },
+    ];
     const { navigation } = props;
     const { colors } = useTheme();
     const [userList, setUserList] = useState([]);
     const [selectedList, setSelectedList] = useState([]);
 
     useEffect(() => {
-        setUserList(mockMembers);
+        const members = Array.from(mockMembers);
+        setUserList(members);
     }, []);
 
     const addOrRemove = (item) => {
-        let users = [...userList];
-        let selecteds = [...selectedList];
+        let users = Array.from(userList);
+        let selecteds = Array.from(selectedList);
         let isSelected = false,
             index = null
 
@@ -33,15 +52,14 @@ const NewGroupScreen = (props) => {
         } else {
             selecteds = [...selecteds, item]
         }
-
         setSelectedList(selecteds);
 
-        for (let data of users) {
-            if (data.id == item.id) {
-                data.selected = (data.selected == null) ? true : !data.selected
-                break
+        users = users.map(user => {
+            if (user.id == item.id) {
+                user.selected = user.selected == null ? true : !user.selected
             }
-        }
+            return user
+        })
         setUserList(users);
     }
 
@@ -69,8 +87,8 @@ const NewGroupScreen = (props) => {
                 <Appbar.Content title="Grup baru" subtitle={selectedList.length > 0 ? `${selectedList.length} terpilih` : 'Tambahkan anggota'} />
             </Appbar.Header>
             <FlatList
-                data={mockMembers}
-                renderItem={renderMemberList}
+                data={userList}
+                renderItem={props => renderMemberList(props)}
                 ItemSeparatorComponent={() => <Divider />}
                 style={{ flex: 1 }} />
             {
