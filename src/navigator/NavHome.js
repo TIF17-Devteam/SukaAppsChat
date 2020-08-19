@@ -5,7 +5,7 @@ import ChatScreen from '../screens/ChatScreen';
 import GroupInfoScreen from '../screens/GroupInfoScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import NewGroupScreen from '../screens/NewGroupScreen';
-
+import SubmitNewGroupScreen from '../screens/SubmitNewGroupScreen';
 const Stack = createStackNavigator();
 
 const NavHome = () => (
@@ -15,6 +15,7 @@ const NavHome = () => (
         <Stack.Screen name="GroupInfo" component={GroupInfoScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />
         <Stack.Screen name="NewGroup" component={NewGroupScreen} />
+        <Stack.Screen name="SubmitNewGroup" component={SubmitNewGroupScreen} />
     </Stack.Navigator>
 );
 

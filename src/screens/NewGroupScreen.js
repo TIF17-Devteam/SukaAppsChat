@@ -2,6 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text, FlatList } from 'react-native';
 import { useTheme, Avatar, List, Appbar, Divider, FAB } from 'react-native-paper';
 
+/*
+TODO:
+- Get data from API
+- Add search
+- Add pagination (optional)
+- Display selected list (we can use chip like telegram)
+*/
+
 const NewGroupScreen = (props) => {
     const mockMembers = [
         {
@@ -95,7 +103,7 @@ const NewGroupScreen = (props) => {
                 selectedList.length > 0 ?
                     <FAB
                         icon="arrow-right"
-                        onPress={() => alert('Next')}
+                        onPress={() => navigation.navigate('SubmitNewGroup', { selectedList: selectedList })}
                         style={{ position: 'absolute', bottom: 0, right: 0, margin: 16 }} /> :
                     null
             }
