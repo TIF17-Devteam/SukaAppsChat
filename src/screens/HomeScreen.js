@@ -54,7 +54,7 @@ const HomeScreen = ({ navigation }) => {
                     {
                         icon: 'message-text',
                         label: 'Pesan baru',
-                        onPress: () => alert('Pesan baru')
+                        onPress: () => navigation.navigate('NewPersonalChat')
                     }
                 ]} />
         </View>
