@@ -61,7 +61,7 @@ const GroupInfoScreen = (props) => {
                 </View>
                 <LayoutDivider color={colors.backgroundSecondary} />
 
-                {/* <TouchableRipple
+                <TouchableRipple
                     onPress={() => alert('Mulai percakapan')}
                     rippleColor="rgba(0,0,0,.32)">
                     <View style={styles.startMessagingContainer}>
@@ -69,7 +69,7 @@ const GroupInfoScreen = (props) => {
                         <Text style={{ fontSize: 16, color: colors.primary }}>Mulai percakapan</Text>
                     </View>
                 </TouchableRipple>
-                <LayoutDivider color={colors.backgroundSecondary} /> */}
+                <LayoutDivider color={colors.backgroundSecondary} />
             </ScrollView>
         </View>
     )

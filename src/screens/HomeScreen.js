@@ -22,6 +22,11 @@ const HomeScreen = ({ navigation }) => {
             onPress={() => navigation.navigate('Chat')} />
     )
 
+    const openSettings = () => {
+        closeMenu();
+        navigation.navigate('Settings');
+    }
+
     return (
         <View style={styles.container}>
             <Appbar.Header style={{ backgroundColor: '#363636' }}>
@@ -30,7 +35,7 @@ const HomeScreen = ({ navigation }) => {
                     visible={isMenuVisible}
                     onDismiss={closeMenu}
                     anchor={<Appbar.Action icon="dots-vertical" onPress={openMenu} color="#ffffff" />} >
-                    <Menu.Item onPress={() => alert('Pengaturan')} title="Pengaturan" />
+                    <Menu.Item onPress={openSettings} title="Pengaturan" />
                     <Menu.Item onPress={signOut} title="Logout" />
                 </Menu>
             </Appbar.Header>
