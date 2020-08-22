@@ -2,6 +2,8 @@ import * as React from 'react';
 import { NavigationContainer } from "@react-navigation/native";
 import { Provider as PaperProvider } from "react-native-paper";
 
+import 'dayjs/locale/id';
+
 import { storeToken, getToken, destroyToken } from "../data/local/auth";
 import { AppContext } from "../config/context";
 import { DefaultTheme, DarkTheme } from "../config/theme";
@@ -9,6 +11,7 @@ import { DefaultTheme, DarkTheme } from "../config/theme";
 import SplashScreen from '../screens/SplashScreen';
 import NavAuth from './NavAuth';
 import NavHome from './NavHome';
+
 
 const Navigator = () => {
     const [state, dispatch] = React.useReducer(

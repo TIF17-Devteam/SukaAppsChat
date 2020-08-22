@@ -148,7 +148,8 @@ const ChatScreen = (props) => {
                 renderInputToolbar={props => renderInputToolbar(props)}
                 showUserAvatar={false}
                 renderAvatar={null}
-                renderBubble={props => renderBubble(props)} />
+                renderBubble={props => renderBubble(props)} 
+                locale="id" />
             {imageUri ?
                 <ImageModal
                     imageUri={imageUri}
