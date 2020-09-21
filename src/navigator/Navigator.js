@@ -12,7 +12,6 @@ import SplashScreen from '../screens/SplashScreen';
 import NavAuth from './NavAuth';
 import NavHome from './NavHome';
 
-
 const Navigator = () => {
     const [state, dispatch] = React.useReducer(
         (prevState, action) => {
@@ -62,11 +61,11 @@ const Navigator = () => {
 
     const appContext = React.useMemo(
         () => ({
-            signIn: async token => {
+            onSignIn: async token => {
                 await storeToken(token);
                 dispatch({ type: 'SIGN_IN', token: token });
             },
-            signOut: async () => {
+            onSignOut: async () => {
                 await destroyToken();
                 dispatch({ type: 'SIGN_OUT' })
             },

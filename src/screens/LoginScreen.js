@@ -1,9 +1,10 @@
 import * as React from 'react'
 import { View, Text, Button, TouchableOpacity, ScrollView, StyleSheet, TextInput, Image, ActivityIndicator } from "react-native";
 import { AppContext } from "../config/context";
+import { login } from '../stores/auth';
 
 const LoginScreen = ({ navigation }) => {
-    const { signIn } = React.useContext(AppContext);
+    const { onSignIn } = React.useContext(AppContext);
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [loading, setLoading] = React.useState(false);
@@ -14,10 +15,13 @@ const LoginScreen = ({ navigation }) => {
             alert('Input tidak boleh kosong')
         } else {
             setLoading(true);
-            // TODO("Change the following line with actual logic")
-            await new Promise(resolve => setTimeout(resolve, 1500));
+            const result = await login({ username, password }).then(x => x);
+            if (result.success) {
+                onSignIn(result.data.accessToken);
+            } else {
+                alert(result.message)
+            }
             setLoading(false);
-            signIn('demo-token');
         }
     }
 

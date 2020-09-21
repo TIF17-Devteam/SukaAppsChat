@@ -1,0 +1,8 @@
+{
+    "services": {
+        "base_url": "http://sukaapps.eastus.cloudapp.azure.com/",
+        "auth_path": "auth-service",
+        "chat_path": "chat-service",
+        "apikey": "idVUINYoLGg3c15MOnBUIYSU9OF6RtRH"
+    }
+}

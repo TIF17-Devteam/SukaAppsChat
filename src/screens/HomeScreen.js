@@ -5,9 +5,10 @@ import { FlatList } from 'react-native-gesture-handler';
 import { AppContext } from "../config/context";
 import mockChats from "../data/mock/chats";
 import { parseTime } from "../utils/datetime";
+import { logout } from '../stores/auth';
 
 const HomeScreen = ({ navigation }) => {
-    const { signOut } = React.useContext(AppContext);
+    const { onSignOut } = React.useContext(AppContext);
     const { colors } = useTheme();
     const [isMenuVisible, setMenuVisible] = React.useState(false);
     const openMenu = () => setMenuVisible(true);
@@ -53,7 +54,7 @@ const HomeScreen = ({ navigation }) => {
                     onDismiss={closeMenu}
                     anchor={<Appbar.Action icon="dots-vertical" onPress={openMenu} color={colors.background} />} >
                     <Menu.Item onPress={openSettings} title="Pengaturan" />
-                    <Menu.Item onPress={signOut} title="Logout" />
+                    <Menu.Item onPress={() => logout({ onSignOut })} title="Logout" />
                 </Menu>
             </Appbar.Header>
             <FlatList
